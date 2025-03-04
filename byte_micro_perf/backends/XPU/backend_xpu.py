@@ -22,6 +22,7 @@ from typing import Any, Dict, List
 
 import torch
 import torch.distributed as dist
+import oneccl_bindings_for_pytorch
 
 from backends import module_store
 from backends.backend import Backend
@@ -68,7 +69,7 @@ class BackendGPU(Backend):
         return dist
 
     def get_dist_backend(self):
-        return "nccl"
+        return "ccl"
 
     def initialize_ccl(self, rank, world_size):
         # set envs and internal vars
@@ -80,7 +81,7 @@ class BackendGPU(Backend):
 
         # init process group
         dist.init_process_group(
-            backend="nccl",
+            backend="ccl",
             world_size=world_size,
             rank=rank, 
             timeout=timedelta(seconds=1800)
