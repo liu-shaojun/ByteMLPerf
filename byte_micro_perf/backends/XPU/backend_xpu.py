@@ -33,7 +33,7 @@ log = logging.getLogger("PerfEngine")
 
 
 
-class BackendGPU(Backend):
+class BackendXPU(Backend):
     def __init__(self, workload_dict, *args, **kwargs):
         super().__init__(workload_dict, *args, **kwargs)
 
