@@ -88,7 +88,7 @@ OP_MAPPING = {
 
 
 
-class BackendGPU(Backend):
+class BackendXPU(Backend):
     def __init__(self):
         super().__init__()
 
